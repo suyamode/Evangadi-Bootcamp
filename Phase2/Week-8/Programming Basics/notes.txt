@@ -1,0 +1,91 @@
+================= JavaScript Array and String Methods =============
+1. Array Methods
+
+=> Iteration & Transformation (Functional)
+ 
+ 
+ .map(callback): Transforms every element and returns a new array of the exact same length.
+
+ .filter(callback): Evaluates every element; returns a new array containing only items that pass the conditional test (true). Returns [] if no elements match.
+
+ .reduce(callback, initialValue): Accumulates array values down into a single final value (e.g., summing numbers).
+
+ .forEach(callback): Executes a function for every element. Does not return a new array (returns undefined); used for side effects.
+
+=> Adding / Removing Elements
+
+.push(item): Appends an item to the end of the array. Mutates original.
+
+.pop(): Removes and returns the last item. Mutates original.
+
+.unshift(item): Inserts an item at the beginning. Mutates original.
+
+.shift(): Removes and returns the first item. Mutates original.
+
+.splice(start, deleteCount, items...): Adds or removes items anywhere in the array. Mutates original.
+
+=> Searching & Matching
+
+.includes(item): Returns true or false if the item exists in the array.
+
+.indexOf(item): Returns the index of the first occurrence of an item, or -1 if not found.
+
+.find(callback): Returns the value of the first element that satisfies the condition, or undefined.
+
+.findIndex(callback): Returns the index of the first element that satisfies the condition, or -1.
+
+.some(callback): Returns true if at least one element passes the condition.
+
+.every(callback): Returns true if all elements pass the condition.
+
+=> Utility & Structural
+
+.slice(start, end): Extracts a shallow copy of a section of an array into a new array. Does not mutate.
+
+.concat(array2): Merges two or more arrays together into a new one.
+
+.join(separator): Combines all elements into a single string separated by the specified string string.
+
+.reverse(): Reverses the order of elements in place. Mutates original.
+
+.sort(compareFunction): Sorts elements in place. Mutates original.
+
+2. String Methods
+
+=> Extracting Substrings
+
+.slice(start, end): Extracts a section of a string and returns it as a new string. (Accepts negative indices to count backward from the end).
+
+.substring(start, end): Similar to .slice(), but treats negative values as 0.
+
+.split(separator): Splits a string into an array of strings based on a separator pattern.
+
+=> Searching & Inspection
+
+.includes(searchString): Checks if a substring exists anywhere inside the string (true/false).
+
+.indexOf(searchString): Returns the index position of the first occurrence of the match, or -1.
+
+.startsWith(searchString): Checks if the string begins with the specified characters.
+
+.endsWith(searchString): Checks if the string ends with the specified characters.
+
+=> Case & Formatting
+
+.toLowerCase(): Converts all characters to lowercase.
+
+.toUpperCase(): Converts all characters to uppercase.
+
+.trim(): Removes whitespace from both ends of the string.
+
+.trimStart() / .trimEnd(): Removes whitespace from just the front or just the back.
+
+=> Altering Text
+
+.replace(searchValue, newValue): Replaces the first occurrence of a specified value with a new value.
+
+.replaceAll(searchValue, newValue): Replaces all occurrences of a specified value.
+
+.repeat(count): Returns a new string containing the original string repeated a specific number of times.
+
+.concat(string2): Combines two or more strings together. (Though using the + operator or template literals `${str1}${str2}` is much more common).

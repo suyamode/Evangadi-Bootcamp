@@ -1,0 +1,30 @@
+============== Getting started with JQuery ==============
+1.  Selecting elements
+
+We use $() function passign the css selector. Returns JQuery object always.
+
+e.g. let redElements=$(".red")
+e.g. let yellowElements=$("#yellow")
+
+2. JQuery filtering
+
+Although we can iterate through the indices we can also use
+$("li:first") to get the first li and $("li:last")
+$("li:nth-child(5)")
+
+3. Chaning contents using JQuery methods
+contents
+.text()
+.html()
+.remove()
+
+4/ Updating
+.addClass()
+.removeClass()
+.css()
+.val()
+.attr()
+.find()
+.isNumeric()
+
+5. Binding events

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the Jokers Game</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body
+    class="bg-dark text-white d-flex justify-content-center align-items-center vh-100 overflow-hidden m-0 p-0"
+  >
+    <div
+      class="container-md main-card-container d-flex flex-column p-3 gap-3 mx-auto justify-content-between"
+    >
+      <!-- Header -->
+      <div class="p-2 text-center prompt fs-2">Let's play Cards</div>
+
+      <!-- 6-Card Grid (Hidden initially until Play is pressed) -->
+      <div
+        class="container-fluid border border-white p-3 d-none"
+        id="card-wrapper"
+      >
+        <div class="row g-3 justify-content-center" id="frame">
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="display-div"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between">
+        <button
+          class="fw-semibold border border-info p-2 btn btn-primary w-100 fs-3"
+          id="play"
+        >
+          Play
+        </button>
+        <button
+          class="border border-info p-2 btn btn-primary w-100 fs-3 fw-semibold"
+          id="score"
+        >
+          Score
+        </button>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="border p-3 text-center fs-4 fw-bold result rounded-3">
+        Press Play to Start
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.com/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

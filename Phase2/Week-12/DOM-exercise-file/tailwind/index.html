@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the Jokers Game</title>
+    <!-- Tailwind CSS Script CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="m-0 p-0 h-screen w-screen overflow-hidden flex items-center justify-center bg-[#0d0b09] bg-[radial-gradient(circle_at_center,rgba(180,115,60,0.5)_0%,rgba(90,50,20,0.3)_50%,rgba(15,10,5,0.85)_90%),linear-gradient(135deg,rgba(120,75,35,0.35)_0%,rgba(40,20,10,0.65)_100%),url('./images/bg.jpg')] bg-cover bg-center bg-no-repeat font-sans"
+  >
+    <!-- Main Modal Container -->
+    <div
+      class="w-full max-w-[600px] max-h-[95vh] border border-[goldenrod] rounded-xl p-4 flex flex-col gap-3 justify-between bg-black/40 backdrop-blur-sm shadow-2xl overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+    >
+      <!-- Title Header -->
+      <div
+        class="border border-[goldenrod] rounded-xl bg-[#010c01] p-2 text-center text-2xl font-semibold text-white shadow-md"
+      >
+        Let's play Cards
+      </div>
+
+      <!-- 6-Card Grid Wrapper -->
+      <div
+        id="card-wrapper"
+        class="hidden border border-white/40 rounded-xl p-3 bg-black/20 w-full flex justify-center"
+      >
+        <div
+          id="frame"
+          class="grid grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-[480px]"
+        >
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+          <div
+            class="display-div h-[220px] border border-[goldenrod] rounded-xl bg-[#010c01] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(218,165,32,0.3)] cursor-pointer"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <button
+          id="play"
+          class="w-full p-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold rounded-lg border border-cyan-400 transition-colors shadow-md"
+        >
+          Play
+        </button>
+        <button
+          id="score"
+          class="w-full p-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold rounded-lg border border-cyan-400 transition-colors shadow-md"
+        >
+          Score
+        </button>
+      </div>
+
+      <!-- Result Banner -->
+      <div
+        class="result border border-[bisque] bg-[#210404] p-3 text-center text-xl font-bold text-white rounded-lg shadow-inner"
+      >
+        Press Play to Start
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

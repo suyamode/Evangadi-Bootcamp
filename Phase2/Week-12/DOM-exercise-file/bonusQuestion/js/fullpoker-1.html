@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the Jokers - Poker Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="m-0 p-0 h-screen w-screen overflow-hidden flex items-center justify-center bg-[#0d0b09] bg-[radial-gradient(circle_at_center,rgba(180,115,60,0.5)_0%,rgba(90,50,20,0.3)_50%,rgba(15,10,5,0.85)_90%),linear-gradient(135deg,rgba(120,75,35,0.35)_0%,rgba(40,20,10,0.65)_100%)] font-sans"
+  >
+    <!-- Main Modal Container -->
+    <div
+      class="w-full max-w-[600px] max-h-[95vh] border border-[goldenrod] rounded-xl p-4 flex flex-col gap-3 justify-between bg-black/50 backdrop-blur-md shadow-2xl overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+    >
+      <!-- Title Header -->
+      <div
+        class="border border-[goldenrod] rounded-xl bg-[#010c01] p-2 text-center text-2xl font-semibold text-amber-400 shadow-md"
+      >
+        🃏 Find The Jokers Poker
+      </div>
+
+      <!-- 6-Card Grid Wrapper -->
+      <div
+        id="card-wrapper"
+        class="hidden border border-amber-500/30 rounded-xl p-3 bg-black/30 w-full flex justify-center"
+      >
+        <div id="frame" class="grid grid-cols-3 gap-3 w-full max-w-[480px]">
+          <div class="display-div h-[210px] cursor-pointer"></div>
+          <div class="display-div h-[210px] cursor-pointer"></div>
+          <div class="display-div h-[210px] cursor-pointer"></div>
+          <div class="display-div h-[210px] cursor-pointer"></div>
+          <div class="display-div h-[210px] cursor-pointer"></div>
+          <div class="display-div h-[210px] cursor-pointer"></div>
+        </div>
+      </div>
+
+      <!-- Control Buttons -->
+      <div class="flex flex-col md:flex-row gap-3 justify-between">
+        <button
+          id="play"
+          class="w-full p-2.5 bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 text-white font-bold rounded-lg border border-emerald-400 transition-colors shadow-md"
+        >
+          Deal / Reset
+        </button>
+        <button
+          id="score"
+          class="w-full p-2.5 bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white font-bold rounded-lg border border-amber-300 transition-colors shadow-md"
+        >
+          Calculate Score
+        </button>
+      </div>
+
+      <!-- Result Banner -->
+      <div
+        class="result border border-[bisque] bg-[#210404] p-3 text-center text-xl font-bold text-white rounded-lg shadow-inner"
+      >
+        Press 'Deal' to Start
+      </div>
+    </div>
+
+    <!-- Embedded Game Logic -->
+    <script>
+      const cardWrapper = document.getElementById("card-wrapper");
+
+      class Card {
+        constructor(name, suit, symbol, color, points) {
+          this.name = name;
+          this.suit = suit;
+          this.symbol = symbol;
+          this.color = color;
+          this.points = points;
+        }
+
+        // Standard Playing Card HTML representation
+        renderFaceUp() {
+          const isRed = this.color === "red";
+          const textColor = isRed ? "text-red-600" : "text-slate-900";
+
+          return `
+            <div class="w-full h-full bg-amber-50 border-2 border-amber-300 rounded-xl p-2 flex flex-col justify-between shadow-lg select-none">
+              <!-- Top Left Badge -->
+              <div class="flex flex-col items-center leading-none w-min ${textColor}">
+                <span class="font-extrabold text-sm uppercase">${this.name.charAt(0)}</span>
+                <span class="text-xs">${this.symbol}</span>
+              </div>
+              
+              <!-- Center Symbol & Info -->
+              <div class="flex flex-col items-center justify-center text-center">
+                <div class="text-4xl ${textColor} mb-1">${this.symbol}</div>
+                <div class="text-xs font-bold text-slate-800 capitalize">${this.name}</div>
+                <div class="text-[10px] text-slate-500 font-semibold uppercase">${this.suit}</div>
+              </div>
+              
+              <!-- Bottom Right Badge -->
+              <div class="flex flex-col items-center leading-none w-min self-end rotate-180 ${textColor}">
+                <span class="font-extrabold text-sm uppercase">${this.name.charAt(0)}</span>
+                <span class="text-xs">${this.symbol}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        renderFaceDown() {
+          return `
+            <div class="w-full h-full bg-gradient-to-br from-red-950 to-slate-900 border-2 border-amber-400/60 hover:border-amber-300 rounded-xl flex flex-col items-center justify-center p-2 transition-all hover:scale-102 shadow-md">
+              <div class="w-full h-full border border-dashed border-amber-500/40 rounded-lg flex flex-col items-center justify-center">
+                <span class="text-amber-400 font-extrabold text-2xl">♠️</span>
+                <span class="text-amber-200 text-xs mt-2 font-semibold">Pick Card</span>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      const deck = [
+        new Card("Jack", "Spades", "♠", "black", 3),
+        new Card("Queen", "Hearts", "♥", "red", 4),
+        new Card("King", "Diamonds", "♦", "red", 5),
+        new Card("Joker 1", "Black Joker", "🃏", "black", 10),
+        new Card("Joker 2", "Red Joker", "🃏", "red", 10),
+        new Card("Ace", "Clubs", "♣", "black", 2),
+      ];
+
+      let drawnCards = [];
+      let pickedCards = [];
+      const MAX_PICKS = 3;
+
+      document.getElementById("play").addEventListener("click", () => {
+        if (cardWrapper) cardWrapper.classList.remove("hidden");
+
+        const resultDiv = document.querySelector(".result");
+        if (resultDiv) {
+          resultDiv.textContent = `Pick ${MAX_PICKS} cards! Try to reveal the Jokers.`;
+        }
+
+        drawnCards = [...deck].sort(() => Math.random() - 0.5);
+        pickedCards = [];
+
+        document.querySelectorAll(".display-div").forEach((box, index) => {
+          box.removeAttribute("data-flipped");
+          box.innerHTML = deck[0].renderFaceDown();
+
+          box.onclick = () => {
+            if (
+              box.getAttribute("data-flipped") === "true" ||
+              pickedCards.length >= MAX_PICKS
+            ) {
+              return;
+            }
+
+            box.setAttribute("data-flipped", "true");
+            const card = drawnCards[index];
+            pickedCards.push(card);
+
+            box.innerHTML = card.renderFaceUp();
+
+            if (resultDiv) {
+              const remaining = MAX_PICKS - pickedCards.length;
+              if (remaining > 0) {
+                resultDiv.textContent = `Picks left: ${remaining}. Select your remaining cards.`;
+              } else {
+                resultDiv.textContent = `All picks made! Click 'Calculate Score' to finish.`;
+              }
+            }
+          };
+        });
+      });
+
+      document.getElementById("score").addEventListener("click", () => {
+        const resultDiv = document.querySelector(".result");
+
+        if (pickedCards.length === 0) {
+          if (resultDiv)
+            resultDiv.textContent = "Pick at least 1 card before scoring!";
+          return;
+        }
+
+        const baseScore = pickedCards.reduce(
+          (acc, card) => acc + card.points,
+          0,
+        );
+        const jokerCount = pickedCards.filter((card) =>
+          card.name.includes("Joker"),
+        ).length;
+
+        let finalScore = baseScore;
+        let statusText = "";
+
+        if (jokerCount === 2) {
+          finalScore = baseScore * 3;
+          statusText = "🔥 JACKPOT! Both Jokers Found! (3x Multiplier)";
+        } else if (jokerCount === 1) {
+          finalScore = baseScore * 2;
+          statusText = "✨ Joker Found! (2x Multiplier)";
+        } else {
+          statusText = "No Jokers found! Standard Score.";
+        }
+
+        if (resultDiv) {
+          resultDiv.innerHTML = `${statusText}<br>Final Score: <strong class="text-amber-300">${finalScore} Pts</strong>`;
+        }
+      });
+    </script>
+  </body>
+</html>

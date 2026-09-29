@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Positioning Demonstration</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        color: #1f2937;
+        /* Creates a long page so you can scroll and observe fixed/sticky behaviors */
+        height: 2000px;
+      }
+
+      /* 1. FIXED POSITIONING EXAMPLE */
+      .fixed-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1e1b4b;
+        color: white;
+        padding: 15px 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensures it stays on top of everything else */
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 100px auto 0 auto; /* Added top margin to clear the fixed nav */
+        padding: 20px;
+      }
+
+      .box {
+        padding: 20px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* 2. STATIC POSITIONING EXAMPLE */
+      .static-box {
+        position: static;
+        background-color: #4b5563; /* Gray */
+      }
+
+      /* 3. RELATIVE POSITIONING EXAMPLE */
+      .relative-parent {
+        position: relative;
+        background-color: #059669; /* Green */
+        /* Moving it down and right from its normal spot */
+        top: 15px;
+        left: 20px;
+      }
+
+      /* 4. ABSOLUTE POSITIONING EXAMPLE */
+      .absolute-child {
+        position: absolute;
+        background-color: #dc2626; /* Red */
+        padding: 10px;
+        border-radius: 4px;
+        /* Anchored to the bottom-right corner of the relative green box */
+        bottom: -15px;
+        right: 10px;
+        font-size: 0.85rem;
+      }
+
+      /* Layout layout for sticky demo */
+      .content-layout {
+        display: flex;
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .main-text {
+        flex: 3;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        min-height: 800px; /* Long area to scroll through */
+      }
+
+      /* 5. STICKY POSITIONING EXAMPLE */
+      .sticky-sidebar {
+        flex: 1;
+        position: sticky;
+        top: 70px; /* Sticks 70px below the viewport edge to not hide under fixed nav */
+        background-color: #d97706; /* Orange */
+        height: 200px;
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fixed-nav">
+      <strong>Fixed Position:</strong> I am locked at the top of the viewport.
+      Try scrolling down!
+    </div>
+
+    <div class="container">
+      <div class="box static-box">
+        Static Position (Default)
+        <p style="font-weight: normal; font-size: 0.9rem; margin: 5px 0 0 0">
+          I flow naturally in the document layout. Coordinates like top/left
+          have no effect on me.
+        </p>
+      </div>
+
+      <div class="box relative-parent">
+        Relative Position (Moved top: 15px, left: 20px)
+        <p style="font-weight: normal; font-size: 0.9rem; margin: 5px 0 0 0">
+          I am nudged out of place, but my empty footprint remains above me. I
+          act as the anchor for my red child element below.
+        </p>
+
+        <div class="absolute-child">
+          Absolute Position (bottom: -15px, right: 10px)
+        </div>
+      </div>
+
+      <div class="content-layout">
+        <div class="main-text">
+          <h2>Scroll Down to see Sticky Position</h2>
+          <p>
+            As you scroll down through this white content block, watch the
+            orange sidebar to the right.
+          </p>
+          <p>
+            It behaves completely normally at first, but once its top edge
+            reaches 70px from the top of the browser window, it locks into place
+            smoothly and travels along down the screen with you.
+          </p>
+          <p>
+            It will stop traveling once you reach the bottom of this text zone
+            container block.
+          </p>
+        </div>
+
+        <div class="sticky-sidebar">
+          Sticky Sidebar
+          <p style="font-weight: normal; font-size: 0.85rem">
+            I scroll naturally until I hit my threshold (top: 70px), then I lock
+            onto the viewport!
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

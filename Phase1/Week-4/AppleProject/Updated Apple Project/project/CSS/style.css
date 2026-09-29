@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+/* header styling */
+header {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  opacity: 0.95;
+}
+nav {
+  display: flex;
+  width: 1200px;
+  height: 50px;
+  justify-content: space-between;
+  margin: 0 auto;
+  list-style: none;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+}
+nav li {
+  padding: 14px;
+}
+.logo-link a:after {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  content: "\f179";
+  margin-right: 8px;
+}
+/* main sections styling */
+.macbook-air-wrapper,
+.iphone17-wrapper,
+.iphone17-pro-wrapper {
+  height: 680px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 12px;
+}
+.macbook-air-wrapper {
+  background-image: url(../../resources/images/hero_macbook_air.jpg);
+}
+.iphone17-wrapper {
+  background-image: url(../../resources/images/hero_iphone_17.jpg);
+}
+.iphone17-pro-wrapper {
+  background-image: url(../../resources/images/hero_iphone_17_pro.jpg);
+}
+.iphone17-pro-wrapper .product-name,
+.iphone17-pro .description,
+.first-wrapper .right-wrapper,
+.second-wrapper .left-wrapper {
+  color: white;
+}
+.internal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 84px;
+}
+.product-name {
+  font-size: 45px;
+  font-weight: bolder;
+}
+.description {
+  font-size: 20px;
+  font-weight: bold;
+}
+/* button stylings */
+.links-wrapper {
+  display: flex;
+  list-style: none;
+}
+.links-wrapper button {
+  margin: 20px 10px;
+}
+.links-wrapper a {
+  text-decoration: none;
+}
+.buy {
+  border: 1px solid #0076df;
+  color: #0076df;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 10px 20px;
+  a {
+    color: #0076df;
+  }
+}
+
+.buy:hover {
+  background-color: #0076df;
+  /* color: white; */
+  a {
+    color: white;
+  }
+}
+
+.learn-more {
+  border: none;
+  background-color: #0076df;
+  padding: 10px 20px;
+  border-radius: 20px;
+  a {
+    color: white;
+  }
+}
+.first-wrapper,
+.second-wrapper,
+.third-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  margin: 0px 12px 12px;
+}
+.left-wrapper,
+.right-wrapper {
+  width: 50%;
+  height: 480px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.first-wrapper .left-wrapper {
+  background-image: url(../../resources/images/promo_ipad_air.jpg);
+}
+.first-wrapper .right-wrapper {
+  background-image: url(../../resources/images/promo_macbook_pro.jpg);
+}
+
+.second-wrapper .left-wrapper {
+  background-image: url(../../resources/images/promo_airpods_pro_3.jpg);
+}
+.second-wrapper .right-wrapper {
+  background-image: url(../../resources/images/promo_apple_watch_series_11.jpg);
+}
+.second-wrapper .left-wrapper {
+  justify-content: flex-end;
+}
+.second-wrapper .left-wrapper .buy {
+  border-color: white;
+  a {
+    color: white;
+  }
+}
+.second-wrapper .left-wrapper .buy:hover {
+  background-color: #fff;
+  a {
+    color: black;
+  }
+}
+.second-wrapper .left-wrapper .learn-more {
+  background-color: white;
+  a {
+    color: black;
+  }
+}
+.third-wrapper .left-wrapper {
+  background-image: url(../../resources/images/promo_iphone_tradein.jpg);
+}
+.third-wrapper .right-wrapper {
+  background-image: url(../../resources/images/promo_apple_card.jpg);
+}

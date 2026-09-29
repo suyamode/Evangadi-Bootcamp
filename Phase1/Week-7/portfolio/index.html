@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hana Birhanu - Aspiring Web Developer</title>
+
+    <!-- Bootstrap -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Fonts: literata for warmth, Courier  Prime for body, JetBrains Mono for labels -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Montenegrin+Gothic+One&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Ethiopic:wght@100..900&family=Playwrite+AU+TAS:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Slabo+27px&family=Tektur:wght@400..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montenegrin+Gothic+One&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Ethiopic:wght@100..900&family=Playwrite+AU+TAS:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Slabo+27px&family=Tektur:wght@400..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome: brand icons (html5, css3, js, bootstrap, java, python, github) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Site styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="side-line" aria-hidden="true">
+      <div class="side-line-fill"></div>
+    </div>
+    <div class="transition-bar" aria-hidden="true">
+      <div class="transition-bar-fill"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md navbar-cozy fixed-top py-3">
+      <div class="container">
+        <a class="navbar-brand brand" href="#home">hana<span>.</span>dev</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          style="border-color: var(--card-border)"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item mt-2 mt-md-0">
+              <button
+                class="lamp-toggle"
+                id="lampToggle"
+                title="Turn the lamp down"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  style="color: var(--amber)"
+                >
+                  <path
+                    d="M9 18h6M10 21h4M12 3a5 5 0 00-3 9c.6.5 1 1.2 1 2h4c0-.8.4-1.5 1-2a5 5 0 00-3-9z"
+                  />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="eyebrow">portfolio — student developer</div>
+          <h1>
+            Hi, I'm <span class="hero-name">Hana Birhanu</span>.<br />Still
+            <em>learning</em>, one build at a time.<span class="blink-cursor"
+              >|</span
+            >
+          </h1>
+          <p class="lead-cozy">
+            An aspiring web developer who likes quiet, well-made things more
+            than flashy ones. I build with HTML, CSS and Bootstrap, write Java,
+            C++ and SQL for the heavier lifting, and I'm currently teaching
+            myself JavaScript and Python properly. Away from the editor, it's
+            usually a cup of coffee and a good book — the same slow, focused
+            feeling I try to bring into my code.
+          </p>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <a href="#projects" class="btn-warm"
+              >See my work <span class="arrow">→</span></a
+            >
+            <a href="#contact" class="btn-outline-warm"
+              >Say hello <span class="arrow">→</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="reveal heading-block">
+          <div class="eyebrow mb-2">about</div>
+          <h2 class="section-title">A bit about my corner of the desk</h2>
+        </div>
+        <div class="row justify-content-center reveal">
+          <div class="col-lg-8">
+            <p class="text-muted-warm mb-4" style="line-height: 1.8">
+              I'm a student developer,based in Addis Ababa,Ethiopia,polishing my
+              way toward a career in fullstack web development — here's the
+              honest version, written the way I'd actually write it.
+            </p>
+            <div class="code-editor">
+              <div class="editor-topbar">
+                <span class="dot red"></span><span class="dot yellow"></span
+                ><span class="dot green"></span>
+                <span class="filename">hana.py</span>
+              </div>
+              <pre
+                class="code-body"
+              ><code><span class="com"># a quick introduction</span>
+<span class="kw">class</span> <span class="cls">Developer</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):
+        <span class="var">self</span>.name <span class="punct">=</span> <span class="str">"Hana Birhanu"</span>
+        <span class="var">self</span>.role <span class="punct">=</span> <span class="str">"Aspiring Web Developer"</span>
+        <span class="var">self</span>.stack <span class="punct">=</span> [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"Bootstrap"</span>, <span class="str">"Java"</span>, <span class="str">"C++"</span>, <span class="str">"MySQL"</span>]
+        <span class="var">self</span>.currently_learning <span class="punct">=</span> [<span class="str">"JavaScript"</span>, <span class="str">"Python"</span>]
+        <span class="var">self</span>.likes <span class="punct">=</span> <span class="str">"clean layouts, honest code, cozy UIs"</span>
+
+    <span class="kw">def</span> <span class="fn">say_hi</span>(<span class="var">self</span>):
+        <span class="kw">return</span> <span class="str">"thanks for stopping by my corner of the internet"</span>
+
+<span class="var">me</span> <span class="punct">=</span> <span class="cls">Developer</span>()
+<span class="fn">print</span>(<span class="var">me</span>.say_hi())</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="reveal heading-block">
+          <div class="eyebrow mb-2">skills</div>
+          <h2 class="section-title">What's on the shelf</h2>
+          <p class="section-sub">
+            Tools I use the most, grouped by what they're for — not ranked, just
+            stacked meaningfully.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4 reveal">
+            <div class="shelf">
+              <h3>Frontend</h3>
+              <div class="skill-grid">
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <i class="fa-brands fa-html5" style="color: #e34f26"></i>
+                  </div>
+                  <span class="label">HTML</span>
+                </div>
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <i class="fa-brands fa-css3-alt" style="color: #1572b6"></i>
+                  </div>
+                  <span class="label">CSS</span>
+                </div>
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <i
+                      class="fa-brands fa-bootstrap"
+                      style="color: #7952b3"
+                    ></i>
+                  </div>
+                  <span class="label">Bootstrap</span>
+                </div>
+                <div class="skill-badge learning">
+                  <div class="icon-circle">
+                    <i class="fa-brands fa-js" style="color: #f7df1e"></i>
+                  </div>
+                  <span class="label">JS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="shelf">
+              <h3>Languages</h3>
+              <div class="skill-grid">
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <i class="fa-brands fa-java" style="color: #ea2d2e"></i>
+                  </div>
+                  <span class="label">Java</span>
+                </div>
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <img src="assets/icons/cpp.svg" alt="C++" />
+                  </div>
+                  <span class="label">C++</span>
+                </div>
+                <div class="skill-badge learning">
+                  <div class="icon-circle">
+                    <i class="fa-brands fa-python" style="color: #3776ab"></i>
+                  </div>
+                  <span class="label">Python</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="shelf">
+              <h3>Data</h3>
+              <div class="skill-grid">
+                <div class="skill-badge">
+                  <div class="icon-circle">
+                    <img src="assets/icons/mysql.svg" alt="MySQL" />
+                  </div>
+                  <span class="label">MySQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="reveal heading-block">
+          <div class="eyebrow mb-2">projects</div>
+          <h2 class="section-title">Things I've built</h2>
+          <p class="section-sub">
+            A running log — starting with the biggest thing on my desk right
+            now.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-12 reveal">
+            <div class="project-card featured">
+              <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                  <div class="project-title">Habesha Ceremonies</div>
+                  <p class="project-desc desc-clamp">
+                    A Java Swing desktop application for managing and booking
+                    Ethiopian cultural ceremonies, built as an academic project.
+                    Includes user and admin roles, a full booking workflow with
+                    pending/active status and payment tracking, and a MySQL
+                    backend. Supports Amharic text in the interface alongside
+                    English.
+                  </p>
+                  <a
+                    href="https://github.com/suyamode/HabeshaApp"
+                    target="_blank"
+                    rel="noopener"
+                    class="read-more"
+                    >Read more →</a
+                  >
+                  <div class="mt-3">
+                    <span class="project-tag"
+                      ><i class="fa-brands fa-java" style="color: #ea2d2e"></i>
+                      Java</span
+                    >
+                    <span class="project-tag">Swing</span>
+                    <span class="project-tag"
+                      ><img src="assets/icons/mysql.svg" alt="" /> MySQL</span
+                    >
+                    <span class="project-tag">Desktop App</span>
+                  </div>
+                  <a
+                    href="https://github.com/suyamode/HabeshaApp"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                  >
+                    <i class="fa-brands fa-github"></i> View on GitHub →
+                  </a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                  <span class="eyebrow">featured build</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 reveal">
+            <div class="project-card">
+              <div class="project-title">AAU Course Registration</div>
+              <p class="project-desc desc-clamp">
+                A C++ console application built to digitize student enrollment
+                at Addis Ababa University. Uses nested structs and file streams
+                for permanent storage, enforces strict validation on student
+                IDs, credit hours and ECTS, and rewrites the record file so it
+                stays alphabetically sorted after every change.
+              </p>
+              <a
+                href="https://github.com/suyamode/AAU-Course-Registration"
+                target="_blank"
+                rel="noopener"
+                class="read-more"
+                >Read more →</a
+              >
+              <div class="mt-3">
+                <span class="project-tag"
+                  ><img src="assets/icons/cpp.svg" alt="" /> C++</span
+                >
+                <span class="project-tag">File I/O</span>
+                <span class="project-tag">CRUD</span>
+              </div>
+              <a
+                href="https://github.com/suyamode/AAU-Course-Registration"
+                target="_blank"
+                rel="noopener"
+                class="project-link"
+              >
+                <i class="fa-brands fa-github"></i> View on GitHub →
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 reveal">
+            <div class="project-card empty">
+              <div class="plus">+</div>
+              <div class="fw-semibold" style="color: var(--text)">
+                Next project goes here
+              </div>
+              <div class="small mt-1">Plenty of shelf space left.</div>
+              <div class="scan-loader" aria-hidden="true">
+                <div class="scan-loader-track">
+                  <div class="scan-loader-bar"></div>
+                </div>
+                <span class="scan-loader-label"
+                  >compiling next build<span class="scan-loader-dots"
+                    ><span>.</span><span>.</span><span>.</span></span
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="row justify-content-center reveal">
+          <div class="col-lg-7">
+            <div class="reveal heading-block mb-4">
+              <div class="eyebrow mb-2">contact</div>
+              <h2 class="section-title" style="font-size: 1.6rem">
+                Come say hi
+              </h2>
+            </div>
+            <div class="code-editor">
+              <div class="editor-topbar">
+                <span class="dot red"></span><span class="dot yellow"></span
+                ><span class="dot green"></span>
+                <span class="filename">contact.js</span>
+              </div>
+              <pre
+                class="code-body"
+              ><code><span class="kw">const</span> <span class="var">contact</span> <span class="punct">=</span> {
+  name<span class="punct">:</span> <span class="str">"Hana Birhanu"</span>,
+  email<span class="punct">:</span> <a class="str" href="mailto:hanabirhanu253@gmail.com">"hanabirhanu253@gmail.com"</a>,
+  github<span class="punct">:</span> <a class="str" href="https://github.com/suyamode" target="_blank" rel="noopener">"github.com/suyamode"</a>,
+  linkedin<span class="punct">:</span> <a class="str" href="https://www.linkedin.com/in/hana-birhanu-8439893b7" target="_blank" rel="noopener">"linkedin.com/in/hana-birhanu-8439893b7"</a>,
+  status<span class="punct">:</span> <span class="str">"open to internships & small projects"</span>
+};
+
+<span class="fn">sendMessage</span>(contact.email)<span class="punct">;</span> <span class="com">// click a string above ↑</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; <span id="year"></span> Hana Birhanu — from mediocre to meteoric.
+    </footer>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

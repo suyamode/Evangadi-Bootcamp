@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete UI Control Components - Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Enable class-based dark mode in Tailwind
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen transition-colors duration-200"
+  >
+    <nav class="bg-gray-900 text-white p-4 shadow-md sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="#" class="text-xl font-bold tracking-wide">DevUI Suite</a>
+
+        <div class="hidden md:flex items-center space-x-6">
+          <a
+            href="#dropdown-section"
+            class="hover:text-indigo-400 transition-colors"
+            >Dropdown</a
+          >
+          <a
+            href="#tabs-section"
+            class="hover:text-indigo-400 transition-colors"
+            >Tabs</a
+          >
+          <a
+            href="#accordion-section"
+            class="hover:text-indigo-400 transition-colors"
+            >Accordion</a
+          >
+
+          <button
+            id="drawer-open-btn"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
+          >
+            Open Cart / Drawer
+          </button>
+        </div>
+
+        <button
+          id="hamburger-btn"
+          aria-label="Toggle Navigation"
+          class="md:hidden text-gray-300 hover:text-white focus:outline-none p-1"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden mt-3 pt-3 border-t border-gray-800 space-y-2"
+      >
+        <a
+          href="#dropdown-section"
+          class="block px-3 py-2 rounded-md hover:bg-gray-800"
+          >Dropdown</a
+        >
+        <a
+          href="#tabs-section"
+          class="block px-3 py-2 rounded-md hover:bg-gray-800"
+          >Tabs</a
+        >
+        <a
+          href="#accordion-section"
+          class="block px-3 py-2 rounded-md hover:bg-gray-800"
+          >Accordion</a
+        >
+        <button
+          id="drawer-open-btn-mobile"
+          class="w-full text-left bg-indigo-600 px-3 py-2 rounded-md"
+        >
+          Open Drawer
+        </button>
+      </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-8">
+      <header
+        class="flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 gap-4"
+      >
+        <div>
+          <h1 class="text-2xl font-extrabold">UI Control Features Library</h1>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">
+            Single-file demonstration of common interactive web controls.
+          </p>
+        </div>
+
+        <label
+          class="inline-flex items-center cursor-pointer gap-3 self-start sm:self-center"
+        >
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Dark Mode</span
+          >
+          <div class="relative">
+            <input type="checkbox" id="theme-toggle" class="sr-only peer" />
+            <div
+              class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"
+            ></div>
+          </div>
+        </label>
+      </header>
+
+      <section
+        id="dropdown-section"
+        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 space-y-4"
+      >
+        <h2 class="text-xl font-bold">
+          1. Dropdown Menu, Modal & Toast Triggers
+        </h2>
+
+        <div class="flex flex-wrap gap-4 items-center">
+          <div class="relative inline-block text-left" id="dropdown-container">
+            <button
+              id="dropdown-btn"
+              class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 font-medium"
+            >
+              <span>Options Menu</span>
+              <svg
+                id="dropdown-arrow"
+                class="w-4 h-4 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              id="dropdown-menu"
+              class="hidden absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl z-20 py-2"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm hover:bg-indigo-50 dark:hover:bg-gray-700"
+                >User Profile</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm hover:bg-indigo-50 dark:hover:bg-gray-700"
+                >Account Settings</a
+              >
+              <div
+                class="border-t border-gray-100 dark:border-gray-700 my-1"
+              ></div>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                >Sign Out</a
+              >
+            </div>
+          </div>
+
+          <button
+            id="modal-open-btn"
+            class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+          >
+            Open Confirmation Modal
+          </button>
+
+          <button
+            id="toast-trigger-btn"
+            class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+          >
+            Trigger Notification
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="tabs-section"
+        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+      >
+        <h2 class="text-xl font-bold mb-4">2. Tab Navigation</h2>
+
+        <div
+          class="flex border-b border-gray-200 dark:border-gray-700 space-x-4"
+        >
+          <button
+            class="tab-btn px-4 py-2 font-semibold text-indigo-600 border-b-2 border-indigo-600"
+            data-tab="tab-overview"
+          >
+            Overview
+          </button>
+          <button
+            class="tab-btn px-4 py-2 font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-700"
+            data-tab="tab-analytics"
+          >
+            Analytics
+          </button>
+          <button
+            class="tab-btn px-4 py-2 font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-700"
+            data-tab="tab-settings"
+          >
+            Settings
+          </button>
+        </div>
+
+        <div class="py-4">
+          <div id="tab-overview" class="tab-panel text-sm leading-relaxed">
+            <p>
+              This is the <strong>Overview</strong> panel content. Tab controls
+              display specific content views without requiring page reloads or
+              routing changes.
+            </p>
+          </div>
+          <div
+            id="tab-analytics"
+            class="tab-panel hidden text-sm leading-relaxed"
+          >
+            <p>
+              This is the <strong>Analytics</strong> panel content. Charts,
+              statistics, and metrics are typically rendered in these dynamic
+              panels.
+            </p>
+          </div>
+          <div
+            id="tab-settings"
+            class="tab-panel hidden text-sm leading-relaxed"
+          >
+            <p>
+              This is the <strong>Settings</strong> panel content. Configure
+              layout options, notifications, and integration parameters here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="accordion-section"
+        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+      >
+        <h2 class="text-xl font-bold mb-4">3. Single-Open Accordion</h2>
+
+        <div class="space-y-3" id="accordion-group">
+          <div
+            class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+          >
+            <button
+              class="accordion-header w-full text-left px-5 py-4 font-semibold flex justify-between items-center bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              <span>What makes Tailwind CSS fast?</span>
+              <span class="accordion-icon transition-transform duration-200"
+                >▼</span
+              >
+            </button>
+            <div
+              class="accordion-body hidden px-5 py-4 border-t border-gray-200 dark:border-gray-700 text-sm bg-white dark:bg-gray-800"
+            >
+              Tailwind uses utility classes that compile into minimal CSS files
+              using Just-In-Time (JIT) compilation engines.
+            </div>
+          </div>
+
+          <div
+            class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+          >
+            <button
+              class="accordion-header w-full text-left px-5 py-4 font-semibold flex justify-between items-center bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              <span>How does the single-open accordion behavior work?</span>
+              <span class="accordion-icon transition-transform duration-200"
+                >▼</span
+              >
+            </button>
+            <div
+              class="accordion-body hidden px-5 py-4 border-t border-gray-200 dark:border-gray-700 text-sm bg-white dark:bg-gray-800"
+            >
+              When an accordion panel is clicked, JavaScript loops through all
+              other panels and adds the
+              <code class="bg-gray-100 dark:bg-gray-900 px-1 text-indigo-500"
+                >hidden</code
+              >
+              class before expanding the clicked one.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="modal-container"
+      class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-md w-full p-6 space-y-4 border border-gray-200 dark:border-gray-700"
+      >
+        <div
+          class="flex justify-between items-center border-b border-gray-100 dark:border-gray-700 pb-3"
+        >
+          <h3 class="text-lg font-bold">Confirm Action</h3>
+          <button
+            id="modal-close-btn"
+            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold leading-none"
+          >
+            &times;
+          </button>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">
+          Are you sure you want to proceed? This modal component overlays the
+          screen and disables underlying page interactions until closed.
+        </p>
+        <div class="flex justify-end gap-3 pt-2">
+          <button
+            id="modal-cancel-btn"
+            class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md text-sm font-medium"
+          >
+            Cancel
+          </button>
+          <button
+            id="modal-confirm-btn"
+            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-medium"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="drawer-container" class="hidden fixed inset-0 z-50">
+      <div
+        id="drawer-backdrop"
+        class="fixed inset-0 bg-black/40 backdrop-blur-xs"
+      ></div>
+
+      <div
+        class="fixed inset-y-0 right-0 max-w-xs w-full bg-white dark:bg-gray-800 shadow-2xl p-6 flex flex-col justify-between border-l border-gray-200 dark:border-gray-700 z-10"
+      >
+        <div>
+          <div
+            class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700"
+          >
+            <h2 class="font-bold text-lg">Sidebar Drawer</h2>
+            <button
+              id="drawer-close-btn"
+              class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="mt-4 space-y-3">
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+              This slide-over panel can act as a cart, filter sidebar, or
+              notification menu.
+            </p>
+            <div
+              class="p-3 bg-indigo-50 dark:bg-gray-700/50 rounded-md text-xs text-indigo-700 dark:text-indigo-300"
+            >
+              Item added to side panel.
+            </div>
+          </div>
+        </div>
+        <button
+          id="drawer-action-btn"
+          class="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium"
+        >
+          Close Drawer
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="toast-container"
+      class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none"
+    >
+      <div
+        class="bg-gray-900 text-white dark:bg-indigo-600 px-4 py-3 rounded-lg shadow-xl flex items-center gap-3"
+      >
+        <svg
+          class="w-5 h-5 text-green-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+        <span class="text-sm font-medium">Action performed successfully!</span>
+      </div>
+    </div>
+
+    <script>
+      // 1. HAMBURGER MENU TOGGLE
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      hamburgerBtn.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden"),
+      );
+
+      // 2. DROPDOWN MENU TOGGLE
+      const dropdownBtn = document.getElementById("dropdown-btn");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+      const dropdownArrow = document.getElementById("dropdown-arrow");
+
+      dropdownBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("hidden");
+        dropdownArrow.classList.toggle("rotate-180");
+      });
+
+      document.addEventListener("click", () => {
+        dropdownMenu.classList.add("hidden");
+        dropdownArrow.classList.remove("rotate-180");
+      });
+
+      // 3. DARK MODE TOGGLE
+      const themeToggle = document.getElementById("theme-toggle");
+      themeToggle.addEventListener("change", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      // 4. TAB NAVIGATION TOGGLE
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabPanels = document.querySelectorAll(".tab-panel");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabBtns.forEach((b) => {
+            b.classList.remove(
+              "text-indigo-600",
+              "border-b-2",
+              "border-indigo-600",
+            );
+            b.classList.add("text-gray-500", "dark:text-gray-400");
+          });
+          tabPanels.forEach((p) => p.classList.add("hidden"));
+
+          btn.classList.add(
+            "text-indigo-600",
+            "border-b-2",
+            "border-indigo-600",
+          );
+          btn.classList.remove("text-gray-500", "dark:text-gray-400");
+          document.getElementById(btn.dataset.tab).classList.remove("hidden");
+        });
+      });
+
+      // 5. SINGLE-OPEN ACCORDION TOGGLE
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const body = header.nextElementSibling;
+          const icon = header.querySelector(".accordion-icon");
+          const isOpen = !body.classList.contains("hidden");
+
+          // Close all accordion panels
+          document
+            .querySelectorAll(".accordion-body")
+            .forEach((b) => b.classList.add("hidden"));
+          document
+            .querySelectorAll(".accordion-icon")
+            .forEach((i) => i.classList.remove("rotate-180"));
+
+          // Toggle current panel if it wasn't already open
+          if (!isOpen) {
+            body.classList.remove("hidden");
+            icon.classList.add("rotate-180");
+          }
+        });
+      });
+
+      // 6. MODAL DIALOG TOGGLE
+      const modal = document.getElementById("modal-container");
+      const openModalBtn = document.getElementById("modal-open-btn");
+      const closeModalBtn = document.getElementById("modal-close-btn");
+      const cancelModalBtn = document.getElementById("modal-cancel-btn");
+      const confirmModalBtn = document.getElementById("modal-confirm-btn");
+
+      const toggleModal = () => modal.classList.toggle("hidden");
+
+      [openModalBtn, closeModalBtn, cancelModalBtn, confirmModalBtn].forEach(
+        (el) => el.addEventListener("click", toggleModal),
+      );
+
+      // 7. SIDEBAR DRAWER TOGGLE
+      const drawer = document.getElementById("drawer-container");
+      const openDrawerBtn = document.getElementById("drawer-open-btn");
+      const openDrawerBtnMobile = document.getElementById(
+        "drawer-open-btn-mobile",
+      );
+      const closeDrawerBtn = document.getElementById("drawer-close-btn");
+      const actionDrawerBtn = document.getElementById("drawer-action-btn");
+      const drawerBackdrop = document.getElementById("drawer-backdrop");
+
+      const toggleDrawer = () => drawer.classList.toggle("hidden");
+
+      [
+        openDrawerBtn,
+        openDrawerBtnMobile,
+        closeDrawerBtn,
+        actionDrawerBtn,
+        drawerBackdrop,
+      ].forEach((el) => el.addEventListener("click", toggleDrawer));
+
+      // 8. AUTO-DISMISSING TOAST NOTIFICATION
+      const toastTriggerBtn = document.getElementById("toast-trigger-btn");
+      const toastContainer = document.getElementById("toast-container");
+      let toastTimeout;
+
+      toastTriggerBtn.addEventListener("click", () => {
+        // Clear any pending dismissal timeouts
+        clearTimeout(toastTimeout);
+
+        // Show toast (slide up and fade in)
+        toastContainer.classList.remove("translate-y-20", "opacity-0");
+
+        // Auto dismiss after 3 seconds
+        toastTimeout = setTimeout(() => {
+          toastContainer.classList.add("translate-y-20", "opacity-0");
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

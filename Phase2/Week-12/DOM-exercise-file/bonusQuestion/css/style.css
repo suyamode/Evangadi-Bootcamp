@@ -1,0 +1,107 @@
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+}
+
+body {
+  background-image:
+    radial-gradient(
+      circle at center,
+      rgba(180, 115, 60, 0.5) 0%,
+      rgba(90, 50, 20, 0.3) 50%,
+      rgba(15, 10, 5, 0.85) 90%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(120, 75, 35, 0.35) 0%,
+      rgba(40, 20, 10, 0.65) 100%
+    ),
+    url("../images/bg.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #0d0b09;
+  font-family: arial;
+}
+
+.main-card-container {
+  border: 1px solid goldenrod;
+  border-radius: 10px;
+  max-width: 800px;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.main-card-container::-webkit-scrollbar {
+  display: none;
+}
+.main-card-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.prompt {
+  border: 1px solid goldenrod;
+  border-radius: 10px;
+  background-color: rgb(1, 12, 1);
+}
+
+/* Card Outer Box - Standardized dimensions */
+.display-div {
+  border: 1px solid goldenrod;
+  border-radius: 10px;
+  background-color: rgb(1, 12, 1);
+  height: 300px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.display-div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
+}
+
+/* Card Image - Fills frame cleanly without stretching */
+.display-div img {
+  height: 140px !important;
+  width: auto !important;
+  max-width: 100%;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Face-down placeholder box locked to match the flipped height */
+.card-back {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 2px dashed goldenrod;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+.card-back:hover {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+
+.cards {
+  background-color: ivory;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: rgb(31, 7, 7);
+}
+
+.result {
+  padding: 15px 0px;
+  background-color: rgb(33, 4, 4);
+  border-color: bisque;
+}

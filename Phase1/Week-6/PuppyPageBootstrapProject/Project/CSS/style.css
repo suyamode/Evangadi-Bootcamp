@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.missing {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(255, 72, 0),
+    orange,
+    rgb(77, 77, 22)
+  );
+}
+.missing p {
+  font-size: 25px;
+}
+.blue-bg {
+  font-size: 40px;
+  background-image: linear-gradient(to right, #085070, #085050, #ad722a);
+}
+@media (min-width: 992px) {
+  .missing p {
+    font-size: 45px;
+  }
+}

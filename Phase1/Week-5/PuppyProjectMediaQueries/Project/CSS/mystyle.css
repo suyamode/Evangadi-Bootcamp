@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Caudex", sans-serif;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+/* header and footer stylings */
+.blue-bg {
+  background-image: linear-gradient(to right, #214f6d, #214f11);
+  color: white;
+  text-align: center;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  padding: clamp(1rem, 2vh, 1.5rem) 2rem;
+}
+.credits {
+  padding: 65px 0 66px;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+/* Banner image styling */
+.banner-image img {
+  display: block;
+  width: 100%;
+}
+
+.puppy {
+  display: block;
+  width: 70%;
+}
+.puppy img {
+  width: 100%;
+}
+.puppy-1 {
+  margin: 45px auto 73px;
+}
+.puppy-2 {
+  margin: 73px auto;
+}
+.puppy-3 {
+  margin: 58px auto 66px;
+}
+.puppy-4 {
+  margin: 66px auto 92px;
+}
+/*  More puppies text */
+h3 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+}
+.missing {
+  display: none;
+  background-image: linear-gradient(to bottom, #dc5967, #dc814d);
+  color: black;
+}
+/* Media Query: Breakpoint at 768px */
+@media (min-width: 768px) {
+  .banner-image {
+    margin-bottom: 84px;
+  }
+  /* Ensures that the puppies are displayed sude by side and that the container width doesn't exceed 980px */
+  .vertical-puppies,
+  .three-puppies {
+    width: 80%;
+    max-width: 980px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .vertical-puppies {
+    margin-bottom: 45px;
+  }
+  .puppy {
+    width: 30%;
+  }
+  .puppy-1,
+  .puppy-2,
+  .puppy-3,
+  .puppy-4 {
+    margin: 0px;
+  }
+  h3 {
+    margin: 73px;
+  }
+  .missing {
+    font-size: 52px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    aspect-ratio: 1/1;
+  }
+  .vertical-puppies .puppy {
+    width: 48%;
+  }
+}
