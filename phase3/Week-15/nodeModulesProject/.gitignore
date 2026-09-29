@@ -1,0 +1,9 @@
+ # Ignore downloaded dependencies
+node_modules/
+
+# Ignore compiled/generated Tailwind output CSS (if applicable)
+public/output.css
+
+# Ignore environment variables / secret keys
+.env
+
