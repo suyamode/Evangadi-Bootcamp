@@ -1,1 +1,35 @@
- 
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Typography & Font Family */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Shared Brand Colors & Text Styles */
+.blue-bg,
+footer {
+  background-color: rgb(7, 57, 98);
+}
+
+.white-text {
+  color: white;
+}
+
+/* Shared Flexbox Centering Helpers */
+.flex-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive Image Rules */
+img {
+  width: 100%;
+  display: block;
+}
