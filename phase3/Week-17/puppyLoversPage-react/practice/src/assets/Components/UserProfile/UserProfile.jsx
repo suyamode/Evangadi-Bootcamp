@@ -7,7 +7,7 @@ function UserProfile() {
     email: "john.doe@example.com",
     username: "johnnydoe",
   });
-  const HandleChange = (e) => {
+  const handleNameChange = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
@@ -16,7 +16,7 @@ function UserProfile() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen mt-3 gap-3 bg-slate-800 text-white">
+    <div className="flex flex-col items-start justify-center min-h-80 mt-3 gap-3 bg-slate-900 shadow-black text-white mx-auto px-36 rounded-2xl">
       <h1>User Profile</h1>
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
@@ -31,7 +31,7 @@ function UserProfile() {
           id="name"
           name="name"
           value={user.name}
-          onChange={HandleChange}
+          onChange={handleNameChange}
           className="focus:outline-none focus:border-none focus:ring-2 focus: ring-amber-500  border-2 border-blue-950 rounded-md p-1"
         />
       </form>
