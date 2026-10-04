@@ -1,18 +1,27 @@
-import React from "react";
+import { Component } from "react";
+import styles from "./FoodItem.module.css";
 
-function FoodItem({ id, name, price, image, description }) {
-  return (
-    <div className="single-food">
-      <div className="img">
-        <img src={image} />
+class FoodItem extends Component {
+  render() {
+    const { id, title, category, price, img, desc } = this.props;
+
+    return (
+      <div className={styles["single-food"]}>
+        <div className={styles["img"]}>
+          <img src={img} alt={img} />
+        </div>
+
+        {category && <span className={styles["category"]}>{category}</span>}
+
+        <div className={styles["title-price"]}>
+          <h3>{title}</h3>
+          <p>${price}</p>
+        </div>
+
+        <div className={styles["food-desc"]}>{desc}</div>
       </div>
-      <div className="title-price">
-        <h3>{name}</h3>
-        <p>{price}</p>
-      </div>
-      <div className="food-desc">{description}</div>
-    </div>
-  );
+    );
+  }
 }
 
 export default FoodItem;

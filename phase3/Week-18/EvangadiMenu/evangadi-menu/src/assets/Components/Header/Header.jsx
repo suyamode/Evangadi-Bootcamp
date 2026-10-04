@@ -1,12 +1,14 @@
-import React from "react";
-
-function Header() {
-  return (
-    <header class="title">
-      <h1>Evangadi Menu</h1>
-      <div></div>
-    </header>
-  );
+import { Component } from "react";
+import styles from "./Header.module.css";
+class Header extends Component {
+  render() {
+    return (
+      <header className={styles.title}>
+        <h1>Evangadi Menu</h1>
+        <div></div>
+      </header>
+    );
+  }
 }
 
 export default Header;

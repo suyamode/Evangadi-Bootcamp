@@ -1,1 +1,9 @@
- 
+body {
+  background-color: #deeff2;
+  font-family: "Poppins", sans-serif;
+}
+
+.all-container {
+  width: 95%;
+  margin: 0 auto;
+}

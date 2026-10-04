@@ -1,22 +1,21 @@
-import "./commonResource/style.css";
-import FoodItem from "./assets/Components/FoodItem/FoodItem";
-import foods from "./assets/items.js";
-import Header from "./assets/Components/Header/Header.jsx";
-import "./App.css";
+import React, { Component } from "react";
+import Header from "./assets/Components/Header/Header";
+import foods from "./assets/items";
 
-function App() {
-  return (
-    <div className="all-container">
-      <Header />
-      <div className="foods-container">
-        {" "}
-        {/* ✅ Single grid parent */}
-        {foods.map((item) => (
-          <FoodItem key={item.id} {...item} />
-        ))}
+import "./commonResource/style.css";
+import "./App.css";
+import "./index.css";
+import FoodListContainer from "./assets/Components/FoodListContainer/FoodListContainer";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="all-container">
+        <Header />
+        <FoodListContainer />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
