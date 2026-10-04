@@ -6,7 +6,8 @@
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.5s;
-  height: 500px;
+  height: auto;
+  min-height: 500px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -42,7 +43,18 @@
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
-
+.category {
+  display: inline-block;
+  margin: 15px 0 0 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f0f0f0;
+  color: #555;
+  border-radius: 3px;
+}
 .food-desc {
   padding: 0 20px;
   font-size: 15px;
