@@ -1,27 +1,16 @@
-import { Component } from "react";
-import styles from "./FoodItem.module.css";
+import React, { Component } from "react";
+import menu from "../../items.js";
+import SingleFoodItem from "../SingleFood/SingleFoodItem.jsx";
+import style from "./FoodItem.module.css";
 
-class FoodItem extends Component {
+export default class FoodItem extends Component {
   render() {
-    const { id, title, category, price, img, desc } = this.props;
-
     return (
-      <div className={styles["single-food"]}>
-        <div className={styles["img"]}>
-          <img src={img} alt={img} />
-        </div>
-
-        {category && <span className={styles["category"]}>{category}</span>}
-
-        <div className={styles["title-price"]}>
-          <h3>{title}</h3>
-          <p>${price}</p>
-        </div>
-
-        <div className={styles["food-desc"]}>{desc}</div>
+      <div className={style["foods-container"]}>
+        {menu.map((item) => (
+          <SingleFoodItem key={item.id} {...item} />
+        ))}
       </div>
     );
   }
 }
-
-export default FoodItem;
