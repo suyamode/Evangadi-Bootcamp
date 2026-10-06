@@ -3,7 +3,7 @@ import styles from "./SingleFoodItem.module.css";
 
 class FoodItem extends Component {
   render() {
-    const { id, title, category, price, img, desc } = this.props;
+    const { title, category, price, img, desc } = this.props;
 
     return (
       <div className={styles["single-food"]}>
