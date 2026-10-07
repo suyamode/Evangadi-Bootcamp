@@ -12,6 +12,7 @@ function App() {
           age={person.age}
           occupation={person.occupation}
           img={person.img}
+          color={person.color}
         />
       ))}
     </div>
