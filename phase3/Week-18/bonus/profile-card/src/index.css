@@ -1,0 +1,43 @@
+body {
+  background-color: ivory;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.profile-card {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 20px auto;
+}
+.profile-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.profile-card:hover {
+  transform: scale(1.05);
+}
+@media (min-width: 768px) {
+  .wrapper {
+    max-width: 1200px;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0 auto;
+  }
+  .profile-card {
+    width: 30%;
+  }
+}
