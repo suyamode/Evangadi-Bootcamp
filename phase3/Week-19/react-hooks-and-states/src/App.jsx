@@ -1,12 +1,16 @@
 import React from "react";
-import MyCounter from "./Components/MyCounter";
-import CounterDisplayer from "./Components/CounterDisplayer";
+import MyCounter from "./Components/ClassBased/MyCounter";
+import IncreaseDecreaseCount from "./Components/Functional/IncreaseDecreaseCount";
+import ThemeToggle from "./Components/Functional/ThemeToggle";
 
 function App() {
   return (
-    <div className="container">
-      <MyCounter />
-    </div>
+    <ThemeToggle>
+      <div className="container">
+        <MyCounter />
+      </div>
+      <IncreaseDecreaseCount />
+    </ThemeToggle>
   );
 }
 
