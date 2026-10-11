@@ -5,8 +5,7 @@ export default class CounterDisplayer extends Component {
     return (
       <div>
         <p>
-          The button has been clicked <strong>{this.props.clicks}</strong>{" "}
-          times!
+          All Clicks Counter: <strong>{this.props.clicks}</strong>{" "}
         </p>
       </div>
     );

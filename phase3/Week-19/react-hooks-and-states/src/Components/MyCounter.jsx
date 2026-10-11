@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import CounterDisplayer from "./CounterDisplayer";
+import EvenCounterDisplayer from "./EvenCounterDisplayer";
 
 export default class MyCounter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 1,
+      count: 0,
     };
   }
   allClicksCounter = () => {
@@ -22,9 +23,17 @@ export default class MyCounter extends Component {
     return (
       <div>
         <h2>Click Counter App</h2>
-        <button onClick={this.allClicksCounter}>Click</button>
-        <button onClick={this.resetCounter}>Reset</button>
+        <div className="button-wrapper">
+          <button className="click" onClick={this.allClicksCounter}>
+            Click
+          </button>
+          <button className="reset" onClick={this.resetCounter}>
+            Reset
+          </button>
+        </div>
+
         <CounterDisplayer clicks={this.state.count} />
+        <EvenCounterDisplayer clicks={this.state.count} />
       </div>
     );
   }

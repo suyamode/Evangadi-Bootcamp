@@ -4,7 +4,7 @@ import CounterDisplayer from "./Components/CounterDisplayer";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <MyCounter />
     </div>
   );
