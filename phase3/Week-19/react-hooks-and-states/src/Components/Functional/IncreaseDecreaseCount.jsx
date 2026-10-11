@@ -4,9 +4,9 @@ import styles from "./IncreaseDecreaseCount.module.css";
 function IncreaseDecreaseCount() {
   const [count, setCount] = useState(0);
   return (
-    <div>
+    <div className="container">
       <h2>Current Count: {count}</h2>
-      <div className={`${styles["btn-container"]} container`}>
+      <div className={`${styles["btn-container"]}`}>
         <button
           className={styles["plus-btn"]}
           onClick={() => {

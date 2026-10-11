@@ -33,6 +33,7 @@ button {
 .click {
   background-color: green;
 }
+
 button:hover {
   opacity: 0.9;
   color: khaki;
@@ -48,4 +49,11 @@ p {
 }
 strong {
   color: rgb(112, 142, 41);
+}
+.useEffect-btn {
+  background-color: green;
+}
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
 }
