@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CounterDisplayer from "./CounterDisplayer";
-import EvenCounterDisplayer from "./EvenCounterDisplayer";
+import EvenCounterDisplayer from "../EvenCounterDisplayer/EvenCounterDisplayer.jsx";
+import CounterDisplayer from "../CounterDisplayer/CounterDisplayer.jsx";
 
 export default class MyCounter extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ export default class MyCounter extends Component {
             Reset
           </button>
         </div>
-
         <CounterDisplayer clicks={this.state.count} />
         <EvenCounterDisplayer clicks={this.state.count} />
       </div>

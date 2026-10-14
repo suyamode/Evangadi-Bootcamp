@@ -1,9 +1,9 @@
 import React from "react";
-import MyCounter from "./Components/ClassBased/MyCounter";
-import IncreaseDecreaseCount from "./Components/Functional/IncreaseDecreaseCount";
-import ThemeToggle from "./Components/Functional/ThemeToggle";
-import PasswordToggle from "./Components/Functional/PasswordToggle";
-import UseEffectForTitle from "./Components/Functional/UseEffectForTitle";
+import MyCounter from "./Components/ClassBased/MyCounter/MyCounter.jsx";
+import IncreaseDecreaseCount from "./Components/Functional/IncreaseDecreaseCount/IncreaseDecreaseCount.jsx";
+import ThemeToggle from "./Components/Functional/ThemeToggle/ThemeToggle.jsx";
+import PasswordToggle from "./Components/Functional/PasswordToggle/PasswordToggle.jsx";
+import UseEffectForTitle from "./Components/Functional/UseEffectForTitle/UseEffectForTitle.jsx";
 
 function App() {
   return (
