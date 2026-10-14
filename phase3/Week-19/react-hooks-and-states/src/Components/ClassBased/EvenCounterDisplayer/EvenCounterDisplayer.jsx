@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./EvenCounterDisplayer.module.css";
 
 export default class EvenCounterDisplayer extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class EvenCounterDisplayer extends Component {
     return (
       <div>
         <p>
-          Even Counter: <strong>{evenClicks}</strong>
+          Even Counter: <strong className={styles.strong}>{evenClicks}</strong>
         </p>
       </div>
     );

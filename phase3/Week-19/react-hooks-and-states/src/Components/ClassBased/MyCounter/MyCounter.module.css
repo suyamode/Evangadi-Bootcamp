@@ -1,0 +1,14 @@
+.click {
+  background-color: green;
+}
+.button-wrapper {
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+button:hover {
+  opacity: 0.9;
+  color: khaki;
+  transform: scale(1.05);
+}

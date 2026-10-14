@@ -8,3 +8,8 @@
 .minus-btn {
   background-color: rgb(40, 12, 67);
 }
+button:hover {
+  opacity: 0.9;
+  color: khaki;
+  transform: scale(1.05);
+}
