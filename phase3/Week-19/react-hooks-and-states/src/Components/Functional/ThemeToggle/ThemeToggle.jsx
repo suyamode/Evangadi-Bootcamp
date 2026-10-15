@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "./ThemeToggle.module.css";
 
 function ThemeToggle({ children }) {
   const bgColors = {
@@ -9,11 +10,9 @@ function ThemeToggle({ children }) {
 
   return (
     <div
+      className={style["toggle-div"]}
       style={{
         backgroundColor: isDarkMode ? bgColors.dark : bgColors.light,
-        minHeight: "100vh",
-        width: "100%",
-        padding: "20px",
       }}
     >
       <button
@@ -24,7 +23,7 @@ function ThemeToggle({ children }) {
       >
         Switch to {isDarkMode ? "Light" : "Dark"} Mode
       </button>
-      <div style={{ marginTop: "20px" }}>{children}</div>
+      <div className={style["children-div"]}>{children}</div>
     </div>
   );
 }
