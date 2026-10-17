@@ -7,6 +7,7 @@ import Hero from "./components/Hero/Hero.jsx";
 import GridSectionOne from "./components/Grid/GridSectionOne/GridSectionOne.jsx";
 import GridSectionTwo from "./components/Grid/GridSectionTwo/GridSectionTwo.jsx";
 import React from "react";
+import YoutubeVideos from "./components/YoutubeVideos/YoutubeVideos.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Hero />
       <GridSectionOne />
       <GridSectionTwo />
+      <YoutubeVideos />
       <Footer />
     </>
   );

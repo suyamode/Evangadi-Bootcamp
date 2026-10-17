@@ -379,7 +379,7 @@ img {
   /* Second section */
   .second-hightlight-wrapper {
     min-height: 692px;
-    background-image: url("../images/home/macbookair-new.jpg");
+    background-image: url("../src/assets/images/home/macbookair-new.jpg");
   }
   .new-alert {
     color: #bf4801;
