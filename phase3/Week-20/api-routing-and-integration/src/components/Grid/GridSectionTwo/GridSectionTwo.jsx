@@ -1,4 +1,5 @@
 import React from "react";
+import arcade from "../../../assets/images/icons/arcade.png";
 
 const GridSectionTwo = () => {
   return (
@@ -10,7 +11,7 @@ const GridSectionTwo = () => {
             <div className="left-side-container">
               <div className="top-logo-wrapper">
                 <div className="logo-wrapper">
-                  <img src="images/icons/arcade.png" alt="Apple Arcade" />
+                  <img src={arcade} alt="Apple Arcade" />
                 </div>
               </div>
               <div className="description-wraper white">

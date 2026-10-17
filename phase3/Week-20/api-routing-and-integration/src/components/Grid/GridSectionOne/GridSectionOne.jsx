@@ -1,4 +1,7 @@
 import React from "react";
+import appleTvLogo from "../../../assets/images/icons/apple-tv-logo.png";
+import banker from "../../../assets/images/home/banker.png";
+import watchSeries from "../../../assets/images/icons/watch-series5-logo.png";
 
 const GridSectionOne = () => {
   return (
@@ -58,11 +61,11 @@ const GridSectionOne = () => {
               <div className="left-side-container">
                 <div className="top-logo-wrapper">
                   <div className="logo-wrapper">
-                    <img src="images/icons/apple-tv-logo.png" alt="Apple TV" />
+                    <img src={appleTvLogo} alt="Apple TV" />
                   </div>
                 </div>
                 <div className="tvshow-logo-wraper">
-                  <img src="images/home/banker.png" alt="The Banker" />
+                  <img src={banker} alt="The Banker" />
                 </div>
                 <div className="watch-more-wrapper">
                   <a href="#">Watch now on the Apple TV App</a>
@@ -75,10 +78,7 @@ const GridSectionOne = () => {
               <div className="right-side-container">
                 <div className="top-logo-wrapper">
                   <div className="logo-wrapper">
-                    <img
-                      src="images/icons/watch-series5-logo.png"
-                      alt="Apple Watch Series 5"
-                    />
+                    <img src={watchSeries} alt="Apple Watch Series 5" />
                   </div>
                 </div>
                 <div className="description-wraper">
