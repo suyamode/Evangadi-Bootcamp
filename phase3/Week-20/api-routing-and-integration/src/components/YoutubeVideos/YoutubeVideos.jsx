@@ -5,16 +5,18 @@ import styles from "./YoutubeVideos.module.css";
 
 function YoutubeVideos() {
   const API_KEY = import.meta.env.VITE_YOUTUBE_KEY;
+  const CHANNEL_ID = "UCE_M8A5yxnLfW0KghEeajjw";
   const [youtubeVids, setVideos] = useState([]);
 
   useEffect(() => {
     const getVideos = async () => {
-      const items = await fetchYouTubeVideos(API_KEY);
+      const items = await fetchYouTubeVideos(API_KEY, CHANNEL_ID);
+      console.log(items);
       setVideos(items);
     };
 
     getVideos();
-  }, [API_KEY]);
+  }, [API_KEY, CHANNEL_ID]);
 
   return (
     <div className={styles.youtubeContainer}>
@@ -31,9 +33,9 @@ function YoutubeVideos() {
                 <div
                   className={`card h-100 shadow-sm border-0 ${styles.videoCard}`}
                 >
-                  <a href={videoLink} target="_blank" rel="noopener noreferrer">
+                  <a href={videoLink} target="_blank">
                     <img
-                      src={snippet.thumbnails.medium.url}
+                      src={snippet.thumbnails.high.url}
                       className="card-img-top"
                       alt={snippet.title}
                     />

@@ -1,7 +1,7 @@
-export const fetchYouTubeVideos = async (apiKey) => {
+export const fetchYouTubeVideos = async (apiKey, channelId) => {
   try {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=Apple&part=snippet,id&order=date&maxResults=9`,
+      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=9`,
     );
 
     if (!response.ok) {
