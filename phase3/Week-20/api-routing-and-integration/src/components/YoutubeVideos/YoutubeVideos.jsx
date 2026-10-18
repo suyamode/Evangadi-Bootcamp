@@ -1,25 +1,19 @@
+// src/components/YoutubeVideos.jsx
 import React, { useState, useEffect } from "react";
+import { fetchYouTubeVideos } from "../../api/YouTubeApi";
 import styles from "./YoutubeVideos.module.css";
 
 function YoutubeVideos() {
   const API_KEY = import.meta.env.VITE_YOUTUBE_KEY;
-  const CHANNEL_ID = "UCzuuOmnnyweIMKLz9b7L1Lw";
   const [youtubeVids, setVideos] = useState([]);
 
   useEffect(() => {
-    const fetchYouTubeVideos = async () => {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=Apple&part=snippet,id&order=date&maxResults=9`,
-        );
-
-        const data = await response.json();
-        setVideos(data.items || []);
-      } catch (error) {
-        console.error("Error fetching YouTube data: ", error);
-      }
+    const getVideos = async () => {
+      const items = await fetchYouTubeVideos(API_KEY);
+      setVideos(items);
     };
-    fetchYouTubeVideos();
+
+    getVideos();
   }, [API_KEY]);
 
   return (
@@ -30,16 +24,14 @@ function YoutubeVideos() {
           {youtubeVids.map((video) => {
             const { id, snippet } = video;
             const videoId = id.videoId || id.channelId;
+            const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
+
             return (
               <div key={videoId} className="col-12 col-md-6 col-lg-4">
                 <div
                   className={`card h-100 shadow-sm border-0 ${styles.videoCard}`}
                 >
-                  <a
-                    href={`https://www.youtube.com/watch?v=${videoId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={videoLink} target="_blank" rel="noopener noreferrer">
                     <img
                       src={snippet.thumbnails.medium.url}
                       className="card-img-top"
