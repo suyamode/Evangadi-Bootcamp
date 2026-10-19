@@ -1,6 +1,7 @@
 // src/components/YoutubeVideos.jsx
 import React, { useState, useEffect } from "react";
 import { fetchYouTubeVideos } from "../../api/YouTubeApi";
+import VideoCard from "./VideoCard";
 import styles from "./YoutubeVideos.module.css";
 
 function YoutubeVideos() {
@@ -29,32 +30,12 @@ function YoutubeVideos() {
             const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
 
             return (
-              <div key={videoId} className="col-12 col-md-6 col-lg-4">
-                <div
-                  className={`card h-100 shadow-sm border-0 ${styles.videoCard}`}
-                >
-                  <a href={videoLink} target="_blank">
-                    <img
-                      src={snippet.thumbnails.high.url}
-                      className="card-img-top"
-                      alt={snippet.title}
-                    />
-                  </a>
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title h6 fw-semibold text-dark">
-                      {snippet.title}
-                    </h5>
-                    <p className="card-subtitle text-muted small mb-2">
-                      {new Date(snippet.publishedAt).toLocaleDateString()}
-                    </p>
-                    <p
-                      className={`card-text text-secondary small flex-grow-1 ${styles.videoDescription}`}
-                    >
-                      {snippet.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <VideoCard
+                key={videoId}
+                snippet={snippet}
+                videoLink={videoLink}
+                videoId={videoId}
+              />
             );
           })}
         </div>
