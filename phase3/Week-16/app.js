@@ -53,7 +53,7 @@ const tables = [
     );`,
 ];
 
-// Question 2: Create all 5 tables via async/await
+// Create all 5 tables via async/await
 app.get("/install", async (req, res) => {
   const combinedQuery = tables.join("\n");
 
@@ -72,36 +72,104 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Question 3: POST /addiphones
-app.post("/addiphones", async (req, res) => {
-  const { product_name, product_url } = req.body;
-
-  if (!product_name || !product_url) {
-    return res
-      .status(400)
-      .send("Please provide both Product Name and Product URL.");
+// API Route for Question 2 (Get All iPhones with LEFT JOIN)
+app.get("/iphones", async (req, res) => {
+  try {
+    const query = `
+      SELECT * FROM Products 
+      LEFT JOIN ProductDescription ON Products.product_id = ProductDescription.product_id
+      LEFT JOIN ProductDetail ON Products.product_id = ProductDetail.product_id
+    `;
+    const [results] = await db.query(query);
+    res.json(results);
+  } catch (err) {
+    console.error("Error fetching iphones:", err.message);
+    res.status(500).send("Server Error: " + err.message);
   }
+});
 
-  const insertQuery = `
-    INSERT INTO Products (product_name, product_url)
-    VALUES (?, ?);
-  `;
+// API Route for Question 3 (Get Single iPhone by URL/ID with LEFT JOIN)
+app.get("/iphone/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    const query = `
+      SELECT * FROM Products 
+      LEFT JOIN ProductDescription ON Products.product_id = ProductDescription.product_id
+      LEFT JOIN ProductDetail ON Products.product_id = ProductDetail.product_id
+      WHERE Products.product_url = ?
+    `;
+    const [results] = await db.query(query, [productId]);
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json(results[0]);
+  } catch (err) {
+    console.error("Error fetching single iphone:", err.message);
+    res.status(500).send("Server Error: " + err.message);
+  }
+});
+
+// POST route to populate all 3 tables at once via the admin form
+app.post("/addiphones", async (req, res) => {
+  const {
+    product_name,
+    product_url,
+    product_brief_description,
+    product_description,
+    product_img,
+    product_link,
+    product_page_url,
+    starting_price,
+    price_range,
+  } = req.body;
 
   try {
-    const [result] = await db.query(insertQuery, [product_name, product_url]);
+    // 1. Insert into Products table
+    const productQuery = `INSERT INTO Products (product_name, product_url) VALUES (?, ?)`;
+    const [productResult] = await db.query(productQuery, [
+      product_name,
+      product_url,
+    ]);
+    const productId = productResult.insertId;
 
-    console.log(`Product inserted successfully with ID: ${result.insertId}`);
+    // 2. Insert into ProductDescription table
+    const descQuery = `
+      INSERT INTO ProductDescription (product_id, product_brief_description, product_description, product_img, product_link) 
+      VALUES (?, ?, ?, ?, ?)
+    `;
+    await db.query(descQuery, [
+      productId,
+      product_brief_description,
+      product_description,
+      product_img,
+      product_link,
+    ]);
+
+    // 3. Insert into ProductDetail table
+    const detailQuery = `
+      INSERT INTO ProductDetail (product_id, product_page_url, starting_price, price_range) 
+      VALUES (?, ?, ?, ?)
+    `;
+    await db.query(detailQuery, [
+      productId,
+      product_page_url,
+      starting_price,
+      price_range,
+    ]);
+
+    console.log(`Successfully added product and details for ID: ${productId}`);
     res.send(`
-      <h2>Product Added Successfully!</h2>
-      <p><strong>Product ID:</strong> ${result.insertId}</p>
+      <h2>Product and All Details Added Successfully!</h2>
+      <p><strong>Product ID:</strong> ${productId}</p>
       <p><strong>Name:</strong> ${product_name}</p>
-      <p><strong>Product URL:</strong> ${product_url}</p>
       <br>
-      <a href="/">Add Another Product</a>
+      <a href="/">Add Another Product</a> | <a href="http://localhost:5173/iphone" target="_blank">View on React App</a>
     `);
   } catch (err) {
-    console.error("Error inserting data into Products table:", err.message);
-    res.status(500).send("Database Insertion Error: " + err.message);
+    console.error("Error inserting into tables:", err.message);
+    res.status(500).send("Database Error: " + err.message);
   }
 });
 
