@@ -10,7 +10,7 @@ import GridSectionTwo from "./components/Grid/GridSectionTwo/GridSectionTwo.jsx"
 import SingleAppleProduct from "./components/SingleAppleProduct/SingleAppleProduct.jsx";
 import Iphone from "./components/Iphone/Iphone.jsx";
 import YoutubeVideos from "./components/YoutubeVideos/YoutubeVideos.jsx";
-
+import FourZeroFour from "./components/FourZeroFour/FourZeroFour.jsx";
 function App() {
   return (
     <Routes>
@@ -25,12 +25,13 @@ function App() {
               <Hero />
               <GridSectionOne />
               <GridSectionTwo />
-              <YoutubeVideos />
+              {/* <YoutubeVideos /> */}
             </>
           }
         />
         <Route path="iphone" element={<Iphone />} />
         <Route path="iphone/:id" element={<SingleAppleProduct />} />
+        <Route path="*" element={<FourZeroFour />} />
       </Route>
     </Routes>
   );

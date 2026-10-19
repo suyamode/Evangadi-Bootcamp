@@ -8,7 +8,8 @@ function Iphone() {
     const fetchIphones = async () => {
       try {
         const res = await fetch("http://localhost:3000/iphones");
-        const data = await res.json(); // Added await here!
+        const data = await res.json();
+        console.log(data);
         setIphones(data);
       } catch (error) {
         console.error("Error fetching iPhones: ", error);

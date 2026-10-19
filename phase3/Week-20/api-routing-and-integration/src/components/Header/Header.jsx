@@ -34,37 +34,37 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#">
+                <Link className="nav-link js-scroll-trigger" to="/ipad">
                   iPad
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#">
+                <Link className="nav-link js-scroll-trigger" to="/watch">
                   Watch
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#">
+                <Link className="nav-link js-scroll-trigger" to="/tv">
                   TV
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#">
+                <Link className="nav-link js-scroll-trigger" to="/music">
                   Music
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="#">
+                <Link className="nav-link js-scroll-trigger" to="/support">
                   Support
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="/search/">
+                <Link className="nav-link js-scroll-trigger" to="/search">
                   <img src={searchIcon} alt="Search" />
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="/cart/">
+                <Link className="nav-link js-scroll-trigger" to="/cart">
                   <img src={cart} alt="Cart" />
                 </Link>
               </li>
