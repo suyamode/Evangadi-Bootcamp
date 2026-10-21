@@ -7,10 +7,12 @@ import AlertSection from "./components/Alert/Alert.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import GridSectionOne from "./components/Grid/GridSectionOne/GridSectionOne.jsx";
 import GridSectionTwo from "./components/Grid/GridSectionTwo/GridSectionTwo.jsx";
-import SingleAppleProduct from "./Pages/SingleAppleProduct/SingleAppleProduct.jsx";
-import Iphone from "./components/Iphone/Iphone.jsx";
+import Iphone from "./Pages/Iphone/Iphone.jsx";
 import YoutubeVideos from "./components/YoutubeVideos/YoutubeVideos.jsx";
 import FourZeroFour from "./components/FourZeroFour/FourZeroFour.jsx";
+import Mac from "./Pages/Mac/Mac";
+import SingleMac from "./Pages/SingleAppleProduct/SingleMac";
+import SingleIphone from "./Pages/SingleAppleProduct/SingleIphone";
 function App() {
   return (
     <Routes>
@@ -30,7 +32,9 @@ function App() {
           }
         />
         <Route path="iphone" element={<Iphone />} />
-        <Route path="iphone/:id" element={<SingleAppleProduct />} />
+        <Route path="/mac" element={<Mac />} />
+        <Route path="iphone/:id" element={<SingleIphone />} />
+        <Route path="mac/:id" element={<SingleMac />} />
         <Route path="*" element={<FourZeroFour />} />
       </Route>
     </Routes>
