@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function SingleAppleProduct() {
-  const { id } = useParams(); // Gets the product_url from the route path (/iphone/:id)
+function Mac() {
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/iphone/${id}`)
+    fetch(`http://localhost:3000/mac/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error("Error fetching single product:", err));
@@ -48,4 +48,4 @@ function SingleAppleProduct() {
   );
 }
 
-export default SingleAppleProduct;
+export default Mac;
