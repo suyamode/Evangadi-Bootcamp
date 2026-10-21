@@ -77,12 +77,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Mount Modular Routes
+// Modular Routes
 app.use("/macs", macRouter);
 app.use("/iphones", iphoneRouter);
-// Note: If your old form posts to /addiphones, you can map the iphoneRouter to root or map it explicitly:
 app.use("/iphone", iphoneRouter);
-app.post("/addiphones", iphoneRouter); // Or adjust form action in HTML to point to /iphones/add
+app.post("/addiphones", iphoneRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started listening at http://localhost:${PORT}`);

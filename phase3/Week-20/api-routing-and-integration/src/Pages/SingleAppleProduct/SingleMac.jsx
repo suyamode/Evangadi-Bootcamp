@@ -11,7 +11,6 @@ function SingleMac() {
     const getProductData = async () => {
       try {
         const data = await fetchMacById(id);
-        // If the backend returns an array, pick the first element
         setProduct(Array.isArray(data) ? data[0] : data);
         setLoading(false);
       } catch (err) {

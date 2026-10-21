@@ -27,14 +27,14 @@ function App() {
               <Hero />
               <GridSectionOne />
               <GridSectionTwo />
-              {/* <YoutubeVideos /> */}
+              <YoutubeVideos />
             </>
           }
         />
-        <Route path="iphone" element={<Iphone />} />
+        <Route path="/iphone" element={<Iphone />} />
         <Route path="/mac" element={<Mac />} />
-        <Route path="iphone/:id" element={<SingleIphone />} />
-        <Route path="mac/:id" element={<SingleMac />} />
+        <Route path="/iphone/:id" element={<SingleIphone />} />
+        <Route path="/mac/:id" element={<SingleMac />} />
         <Route path="*" element={<FourZeroFour />} />
       </Route>
     </Routes>

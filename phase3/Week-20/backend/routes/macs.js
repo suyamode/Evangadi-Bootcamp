@@ -1,4 +1,3 @@
-// backend/routes/macs.js
 const express = require("express");
 const router = express.Router();
 const db = require("../db"); // Adjust path to point to your database connection file

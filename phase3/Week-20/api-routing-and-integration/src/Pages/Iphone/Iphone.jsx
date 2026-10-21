@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchIphones } from "../../api/iphones"; // Import your service module
+import { fetchIphones } from "../../api/iphones";
 import styles from "./iphone.module.css";
 
 function Iphone() {
