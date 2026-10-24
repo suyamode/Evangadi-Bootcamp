@@ -2,6 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import db from "../config/db.js";
 import { registerSchema } from "../../Client/src/validations/authValidation.js";
+import { login } from "../controllers/authController.js";
 const router = express.Router();
 router.post("/register", async (req, res) => {
   try {
@@ -27,4 +28,6 @@ router.post("/register", async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+router.post("/login", login);
 export default router;
