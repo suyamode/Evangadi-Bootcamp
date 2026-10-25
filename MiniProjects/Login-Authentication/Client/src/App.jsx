@@ -1,44 +1,89 @@
-import RegisterForm from "./Components/RegisterForm";
-import React, { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard"; // Or whatever your welcome/dashboard component is named
+import RegisterForm from "./Components/RegisterForm";
+import Dashboard from "./Components/Dashboard";
+import { getTokenExpiry } from "./utils/auth";
+
+const clearStorage = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+};
+
+// Restore a saved session on page load, but only if the token hasn't expired.
+function readSession() {
+  try {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const expiresAt = getTokenExpiry(token);
+    if (token && user && expiresAt && expiresAt > Date.now()) {
+      return { user, expiresAt };
+    }
+  } catch {
+    /* fall through and clear */
+  }
+  clearStorage();
+  return null;
+}
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [session, setSession] = useState(readSession);
+  const [view, setView] = useState("login"); // "login" | "register"
+  const [notice, setNotice] = useState("");
 
-  // Check localStorage on initial load to keep user logged in on refresh
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
-
-    if (token && user) {
-      setIsAuthenticated(true);
-      setCurrentUser(JSON.parse(user));
-    }
+  const handleLogout = useCallback((message = "") => {
+    clearStorage();
+    setSession(null);
+    setView("login");
+    setNotice(typeof message === "string" ? message : "");
   }, []);
 
-  // Handle successful login from Login component
-  const handleLoginSuccess = (userData) => {
-    setIsAuthenticated(true);
-    setCurrentUser(userData);
+  const handleLoginSuccess = ({ token, user }) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+    setNotice("");
+    setSession({ user, expiresAt: getTokenExpiry(token) });
   };
 
-  // Handle user logout
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setIsAuthenticated(false);
-    setCurrentUser(null);
-  };
+  // Sign the user out automatically when the token expires.
+  useEffect(() => {
+    if (!session?.expiresAt) return;
+    const timer = setTimeout(
+      () => handleLogout("Your session expired. Please sign in again."),
+      Math.max(session.expiresAt - Date.now(), 0),
+    );
+    return () => clearTimeout(timer);
+  }, [session, handleLogout]);
+
+  if (session) {
+    return (
+      <Dashboard
+        user={session.user}
+        expiresAt={session.expiresAt}
+        onLogout={() => handleLogout()}
+      />
+    );
+  }
+
+  if (view === "register") {
+    return (
+      <RegisterForm
+        onSwitchToLogin={() => setView("login")}
+        onRegistered={() => {
+          setNotice("Account created successfully. Please sign in.");
+          setView("login");
+        }}
+      />
+    );
+  }
 
   return (
-    <div>
-      {isAuthenticated ? (
-        <Dashboard user={currentUser} onLogout={handleLogout} />
-      ) : (
-        <Login onLoginSuccess={handleLoginSuccess} />
-      )}
-    </div>
+    <Login
+      notice={notice}
+      onLoginSuccess={handleLoginSuccess}
+      onSwitchToRegister={() => {
+        setNotice("");
+        setView("register");
+      }}
+    />
   );
 }

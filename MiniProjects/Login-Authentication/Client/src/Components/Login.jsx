@@ -1,105 +1,72 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "../utils/formValidator";
 import { loginUser } from "../Services/api";
-import { loginFormSchema, validateForm } from "../utils/formValidator";
+import AuthLayout from "./AuthLayout";
+import { Alert, FormField, PasswordField, PrimaryButton } from "./ui";
 
-export default function Login({ onLoginSuccess }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+export default function Login({ onLoginSuccess, onSwitchToRegister, notice }) {
   const [serverError, setServerError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({ resolver: zodResolver(loginFormSchema) });
+
+  const onSubmit = async (values) => {
     setServerError("");
-
-    // 1. Client-side validation with Zod
-    const validation = validateForm(loginFormSchema, { email, password });
-    if (!validation.isValid) {
-      setErrors(validation.errors);
-      return;
-    }
-    setErrors({});
-    setLoading(true);
-
     try {
-      // 2. Call backend API
-      const data = await loginUser({ email, password });
-
-      // 3. Store session data in localStorage
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      // 4. Trigger parent state change to show Dashboard/Welcome view
-      if (onLoginSuccess) onLoginSuccess(data.user);
+      const data = await loginUser(values);
+      onLoginSuccess(data); // { token, user }
     } catch (err) {
       setServerError(err.message);
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "400px",
-        margin: "50px auto",
-        padding: "20px",
-        fontFamily: "sans-serif",
-      }}
+    <AuthLayout
+      title="Welcome back"
+      subtitle="Sign in to your account to continue."
+      footer={
+        <>
+          Don&apos;t have an account?{" "}
+          <button
+            type="button"
+            onClick={onSwitchToRegister}
+            className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500"
+          >
+            Create one
+          </button>
+        </>
+      }
     >
-      <h2>Login to Your Account</h2>
+      {notice && <Alert variant="success">{notice}</Alert>}
+      {serverError && <Alert>{serverError}</Alert>}
 
-      {serverError && (
-        <div style={{ color: "red", marginBottom: "15px" }}>{serverError}</div>
-      )}
-
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label>Email Address</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-          {errors.email && (
-            <span style={{ color: "red", fontSize: "12px" }}>
-              {errors.email}
-            </span>
-          )}
-        </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-          {errors.password && (
-            <span style={{ color: "red", fontSize: "12px" }}>
-              {errors.password}
-            </span>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            width: "100%",
-            padding: "10px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+        <FormField
+          id="email"
+          label="Email address"
+          type="email"
+          autoComplete="email"
+          placeholder="you@example.com"
+          error={errors.email?.message}
+          {...register("email")}
+        />
+        <PasswordField
+          id="password"
+          label="Password"
+          autoComplete="current-password"
+          placeholder="Enter your password"
+          error={errors.password?.message}
+          {...register("password")}
+        />
+        <PrimaryButton loading={isSubmitting} loadingText="Signing in...">
+          Sign in
+        </PrimaryButton>
       </form>
-    </div>
+    </AuthLayout>
   );
 }

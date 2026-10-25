@@ -1,33 +1,30 @@
 const API_URL = "http://localhost:5001/api/auth";
 
-export async function registerUser(userData) {
-  const response = await fetch(`${API_URL}/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(result.message || "Registration failed");
+async function request(path, body, fallbackMessage) {
+  let response;
+  try {
+    response = await fetch(`${API_URL}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    // fetch only throws when the request never reached the server
+    throw new Error(
+      "Cannot reach the server. Check that it is running on port 5001.",
+    );
   }
 
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(result.message || fallbackMessage);
+  }
   return result;
 }
-export async function loginUser(credentials) {
-  const response = await fetch(`${API_URL / login}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-  const result = await response.json();
-  if (!response.ok) {
-    throw new Error(result.message || "Login failed.");
-  }
-  return results;
-}
+
+export const registerUser = (userData) =>
+  request("/register", userData, "Registration failed");
+
+export const loginUser = (credentials) =>
+  request("/login", credentials, "Login failed");
