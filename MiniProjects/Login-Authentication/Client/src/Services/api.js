@@ -9,7 +9,6 @@ async function request(path, body, fallbackMessage) {
       body: JSON.stringify(body),
     });
   } catch {
-    // fetch only throws when the request never reached the server
     throw new Error(
       "Cannot reach the server. Check that it is running on port 5001.",
     );

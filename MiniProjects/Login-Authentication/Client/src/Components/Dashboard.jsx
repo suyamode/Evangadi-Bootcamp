@@ -66,7 +66,7 @@ export default function Dashboard({ user, expiresAt, onLogout }) {
 
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         {/* Welcome banner */}
-        <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-6 py-8 text-white shadow-lg shadow-indigo-600/20 sm:px-8">
+        <section className="relative overflow-hidden rounded-2xl bg-linear-to-br from-indigo-600 to-violet-600 px-6 py-8 text-white shadow-lg shadow-indigo-600/20 sm:px-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <p className="relative text-sm font-medium text-indigo-100">{greeting()}</p>
           <h1 className="relative mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">

@@ -23,7 +23,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
       {/* Brand panel (desktop only) */}
       <aside className="relative hidden flex-col justify-between overflow-hidden bg-slate-950 p-12 text-white lg:flex">
         <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-indigo-600/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-40 -right-24 h-[28rem] w-[28rem] rounded-full bg-violet-600/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 -right-24 h-112 w-md rounded-full bg-violet-600/20 blur-3xl" />
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
