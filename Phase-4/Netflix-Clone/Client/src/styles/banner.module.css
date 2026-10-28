@@ -62,3 +62,14 @@ button:hover {
     #111
   );
 }
+@media (max-width: 768px) {
+  .btns {
+    padding-top: 6rem;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  button {
+    width: 250px;
+    padding-right: 1rem;
+  }
+}

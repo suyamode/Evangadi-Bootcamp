@@ -1,22 +1,14 @@
 import React from "react";
 import Header from "./Components/Header";
 import Banner from "./Components/Banner";
+import DisplayRow from "./Components/DisplayRow";
 
 function App() {
   return (
     <div>
       <Header />
       <Banner />
-      <div
-        style={{
-          height: "2000px",
-          background: "white",
-          paddingTop: "100px",
-          color: "white",
-        }}
-      >
-        <h1>Scroll down to test the header effect!</h1>
-      </div>
+      <DisplayRow />
     </div>
   );
 }

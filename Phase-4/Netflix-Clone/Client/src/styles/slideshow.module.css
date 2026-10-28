@@ -1,0 +1,64 @@
+.title {
+  color: white;
+  margin-left: 20px; /* Adjusted for smaller screens */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.Row {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents horizontal page scrolling on mobile */
+}
+
+.Row :global(.swiper) {
+  width: 100%;
+  padding: 20px 10px; /* Reduced side padding on mobile */
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.Row :global(.swiper-slide) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto !important; /* Let Swiper handle widths per breakpoint */
+}
+
+/* Hide navigation arrows on small mobile screens where users swipe with touch */
+@media (max-width: 768px) {
+  .Row :global(.swiper-button-prev),
+  .Row :global(.swiper-button-next) {
+    display: none !important;
+  }
+}
+
+.Row :global(.swiper-button-prev),
+.Row :global(.swiper-button-next) {
+  background: rgba(0, 0, 0, 0.5) !important;
+  width: 40px !important;
+  height: 100% !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  color: white !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 50;
+}
+
+.Row :global(.swiper-button-prev) {
+  left: 0 !important;
+}
+
+.Row :global(.swiper-button-next) {
+  right: 0 !important;
+}
+
+.Row:hover :global(.swiper-button-prev),
+.Row:hover :global(.swiper-button-next) {
+  opacity: 1;
+  pointer-events: auto;
+}
