@@ -35,7 +35,7 @@ function SlideShow({ title, movies }) {
             },
           }}
         >
-          {movies.map((singleMovie) => (
+          {movies?.map((singleMovie) => (
             <SwiperSlide key={singleMovie.id}>
               <MovieCard movie={singleMovie} />
             </SwiperSlide>

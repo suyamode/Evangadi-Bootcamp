@@ -5,22 +5,26 @@ import { GoCheckCircleFill } from "react-icons/go";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import styles from "../styles/movieCard.module.css";
 
+// TMDB base URL for images
+const base_url = "https://image.tmdb.org/t/p/original/";
+
 function MovieCard({ movie }) {
   let genres = ["Adventrue", "Thriller", "Action"];
+
   return (
     <div className={styles.cardWrapper}>
-      {/* Poster image */}
+      {/* Poster image with the base_url prepended */}
       <img
         className={styles.poster}
-        src={movie.poster_path}
-        alt="poster image"
+        src={`${base_url}${movie.poster_path}`}
+        alt={movie.title || movie.name || "poster image"}
       />
       {/* hover card */}
       <div className={styles.hoverCard}>
-        {/* img */}
+        {/* hover image */}
         <img
-          src={movie.poster_path}
-          alt="hover image"
+          src={`${base_url}${movie.poster_path}`}
+          alt={movie.title || movie.name || "hover image"}
           className={styles.hoverImage}
         />
         {/* badge */}
