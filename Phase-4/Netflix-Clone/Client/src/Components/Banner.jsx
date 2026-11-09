@@ -32,7 +32,7 @@ function Banner() {
     <div
       className={`container-fluid ${styles.banner} text-white`}
       style={{
-        backgroundSize: "cover", // Fixed typo here
+        backgroundSize: "cover",  
         backgroundImage: `url("${base_url}${bannerImage?.backdrop_path || ""}")`,
         backgroundPosition: "center center",
       }}
